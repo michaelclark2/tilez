@@ -1,24 +1,22 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './Board.scss';
+import { GameState } from '../../app/GameState';
 
 export default (props) => {
-  const {size} = props;
-  const height = size[0];
-  const width = size[1];
-
-  let tileCounter = 0;
+  const {board, setBoard} = useContext(GameState);
 
   return (
     <div className="Board">
     {
-      Array(height).fill(0).map(row => (
+      board.tiles.map(row => (
         <div className="columns">
           {
-            Array(width).fill(0).map(col => <div className="column">{tileCounter++}</div>)
+            row.map(col => <div className="column">{col}</div>)
           }
         </div>
       ))
     }
+    <button onClick={(e) => setBoard([[1,2,3],[4,5,6],[7,8,9]])}>Change Board</button>
     </div>
   )
 }
