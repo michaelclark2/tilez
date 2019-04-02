@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './Board.scss';
 import { GameState } from '../../app/GameState';
+import Tile from '../Tile/Tile';
 
 export default (props) => {
   const {board, setBoard} = useContext(GameState);
@@ -9,9 +10,9 @@ export default (props) => {
     <div className="Board">
     {
       board.tiles.map(row => (
-        <div className="columns">
+        <div className="columns is-mobile is-centered">
           {
-            row.map(col => <div className="column">{col}</div>)
+            row.map(col => <div className="column is-narrow"><Tile color={col} /></div>)
           }
         </div>
       ))
