@@ -5,7 +5,7 @@ const randomNum = (max, min = 0) => {
 const findMatchingNeighbors = (tiles, position) => {
   // finds neighbors
   // return array of positions
-  const color = tiles[position[0]][position[1]];
+  const color = getTileAtPosition(tiles, position);
 
   const relations = {
     top: position[0] - 1 >= 0 ? tiles[position[0] - 1][position[1]] : null,
@@ -14,9 +14,9 @@ const findMatchingNeighbors = (tiles, position) => {
     right: position[1] + 1 < tiles[0].length ? tiles[position[0]][position[1] + 1] : null,
   }
   const currentMatches = [];
-  for (let key in relations) {
-    if (relations[key] === color) {
-      switch (key) {
+  for (let direction in relations) {
+    if (relations[direction] === color) {
+      switch (direction) {
         case 'top':
           currentMatches.push([position[0] - 1, position[1]]);
           break;
@@ -62,8 +62,19 @@ const findMatches = (tiles, position, foundMatches = [position]) => {
     return foundMatches
 };
 
+const getTileAtPosition = (tiles, position) => {
+  return tiles[position[0]][position[1]];
+};
+
+const clearMatches = (tiles, matches) => {
+  matches.forEach(match => {
+    tiles[match[0]][match[1]] = getTileAtPosition(tiles, match) + 1;
+  });
+  return tiles;
+};
+
 export default {
-  findMatchingNeighbors,
   findMatches,
+  clearMatches,
   randomNum,
-}
+};

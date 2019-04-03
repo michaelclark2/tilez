@@ -7,11 +7,13 @@ const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'cyan'];
 
 export default (props) => {
   const {color, position} = props;
-  const {board} = useContext(GameState);
+  const {board, setBoard} = useContext(GameState);
   const checkPosition = () => {
     // console.log(utils.findNeighbors(board.tiles, position));
     const matches = utils.findMatches(board.tiles, position);
-    console.log(matches);
+    if (matches.length > 2) {
+      setBoard(utils.clearMatches(board.tiles, matches));
+    }
   }
   return (
     <div className="Tile column" style={{backgroundColor: colors[color]}} onClick={checkPosition}>
