@@ -1,22 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './Board.scss';
 import { GameState } from '../../app/GameState';
+import Tile from '../Tile/Tile';
 
 export default (props) => {
-  const {board, setBoard} = useContext(GameState);
-
+  const {board} = useContext(GameState);
   return (
     <div className="Board">
     {
-      board.tiles.map(row => (
-        <div className="columns">
+      board.tiles.map((row, r) => (
+        <div className="columns is-mobile is-centered">
           {
-            row.map(col => <div className="column">{col}</div>)
+            row.map((col, c) => <div className="column is-narrow"><Tile color={col} position={[r, c]} /></div>)
           }
         </div>
       ))
     }
-    <button onClick={(e) => setBoard([[1,2,3],[4,5,6],[7,8,9]])}>Change Board</button>
     </div>
   )
 }
