@@ -1,4 +1,4 @@
-import utils from '../helpers';
+import utils from '../utils';
 
 export class GameBoard {
   constructor(height, width, colors) {

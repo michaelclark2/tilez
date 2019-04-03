@@ -16,7 +16,7 @@ class App extends Component {
     }
 
     this.state = {
-      board: new GameBoard(30, 30, 3),
+      board: new GameBoard(10, 10, 5),
       setBoard: this.setBoard
     }
   }
