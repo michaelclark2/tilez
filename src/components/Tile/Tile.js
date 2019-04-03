@@ -10,7 +10,8 @@ export default (props) => {
   const {board} = useContext(GameState);
   const checkPosition = () => {
     // console.log(utils.findNeighbors(board.tiles, position));
-    utils.findMatches(board.tiles, position);
+    const matches = utils.findMatches(board.tiles, position);
+    console.log(matches);
   }
   return (
     <div className="Tile column" style={{backgroundColor: colors[color]}} onClick={checkPosition}>
