@@ -1,8 +1,10 @@
 import React from 'react';
 
 export const Game = {
-  board: [],
-  setBoard: () => {}
+  board: {},
+  score: 0,
+  setBoard: () => {},
+  addToScore: () => {}
 }
 
 export const GameState = React.createContext(Game);

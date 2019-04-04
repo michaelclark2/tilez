@@ -15,9 +15,16 @@ class App extends Component {
       this.setState({board});
     }
 
+    this.addToScore = (newScore) => {
+      const {score} = {...this.state};
+      this.setState({score: score + newScore})
+    }
+
     this.state = {
-      board: new GameBoard(10, 10, 4),
-      setBoard: this.setBoard
+      board: new GameBoard(20, 20, 4),
+      score: 0,
+      setBoard: this.setBoard,
+      addToScore: this.addToScore
     }
   }
 
@@ -26,6 +33,7 @@ class App extends Component {
       <div className="App">
       <GameState.Provider value={this.state}>
         <h1>Tilez</h1>
+        <h3 className="score">{this.state.score}</h3>
         <Board />
       </GameState.Provider>
       </div>

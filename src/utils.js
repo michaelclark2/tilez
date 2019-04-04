@@ -66,9 +66,13 @@ const getTileAtPosition = (tiles, position) => {
   return tiles[position[0]][position[1]];
 };
 
-const clearMatches = (tiles, matches) => {
+const clearMatches = (board, matches) => {
+  const {tiles} = board;
   matches.forEach(match => {
-    tiles[match[0]][match[1]] = getTileAtPosition(tiles, match) + 1;
+    // tiles[match[0]][match[1]] = randomNum(board.colors)
+    // tiles[match[0]][match[1]] = getTileAtPosition(tiles, match) + 1
+    tiles[match[0]][match[1]] = 'x'
+
   });
   return tiles;
 };
