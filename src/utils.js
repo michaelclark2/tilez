@@ -69,12 +69,40 @@ const getTileAtPosition = (tiles, position) => {
 const clearMatches = (board, matches) => {
   const {tiles} = board;
   matches.forEach(match => {
-    // tiles[match[0]][match[1]] = randomNum(board.colors)
-    // tiles[match[0]][match[1]] = getTileAtPosition(tiles, match) + 1
+    // tiles[match[0]][match[1]] = randomNum(board.colors) // random replacement squares
+    // tiles[match[0]][match[1]] = getTileAtPosition(tiles, match) + 1 // grows matched section
     tiles[match[0]][match[1]] = 'x'
 
   });
+
+  return shiftColumns(tiles, matches);
+};
+
+const shiftColumns = (tiles, matches) => {
+
+  const columns = matches.reduce((cols, match) => {
+    if (!cols.includes(match[1])) {
+      cols.push(match[1]);
+    }
+    return cols;
+  }, []);
+
+  columns.forEach(col => {
+    const column = tiles.map(r => r[col]).filter(t => t !== 'x');
+    console.log(column);
+    while (column.length !== tiles[0].length) {
+      column.unshift('x');
+    }
+    column.forEach((t, i) => {
+      tiles[i][col] = t;
+    });
+  });
+
   return tiles;
+};
+
+const hasEmptySpaces = (tiles) => {
+  return tiles.some(row => row.some(col => col === 'x'));
 };
 
 export default {
