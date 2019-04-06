@@ -6,31 +6,31 @@ import { GameBoard } from '../models/GameBoard';
 
 class App extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.setBoard = (newBoard) => {
       const {board} = {...this.state};
       board.tiles = newBoard;
       this.setState({board});
-    }
+    };
 
     this.state = {
       board: new GameBoard(10, 10, 4),
       setBoard: this.setBoard
-    }
+    };
   }
 
-  render() {
+  render () {
     return (
       <div className="App">
-      <GameState.Provider value={this.state}>
-        <h1>Tilez</h1>
-        <Board />
-      </GameState.Provider>
+        <GameState.Provider value={this.state}>
+          <h1>Tilez</h1>
+          <Board />
+        </GameState.Provider>
       </div>
     );
   }
-}
+};
 
 export default App;

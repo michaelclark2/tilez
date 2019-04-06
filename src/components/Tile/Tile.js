@@ -14,9 +14,9 @@ export default (props) => {
     if (matches.length > 2) {
       setBoard(utils.clearMatches(board.tiles, matches));
     }
-  }
+  };
   return (
     <div className="Tile column" style={{backgroundColor: colors[color]}} onClick={checkPosition}>
     </div>
-  )
-}
+  );
+};
