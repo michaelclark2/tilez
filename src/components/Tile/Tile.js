@@ -15,9 +15,9 @@ export default (props) => {
       setBoard(utils.clearMatches(board, matches));
       addToScore(matches.length);
     }
-  }
+  };
   return (
     <div className="Tile column" style={{backgroundColor: colors[color]}} onClick={checkPosition}>
     </div>
-  )
-}
+  );
+};
