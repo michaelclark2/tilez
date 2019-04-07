@@ -1,15 +1,16 @@
-{
+module.exports = {
   "extends": "react-app",
   "env": {
     "es6": true,
     "node": true,
     "browser": true,
-    "jquery": true
   },
   "globals": {
     "firebase": true
   },
-  "plugins": ["promise"],
+  "plugins": [
+    "promise"
+  ],
   "rules": {
     "arrow-spacing": ["error", { "before": true, "after": true }],
     "block-spacing": ["error", "always"],

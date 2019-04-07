@@ -1,6 +1,10 @@
 .App {
-  h1 {
-    text-align: center;
-    font-size: 4em;
+  text-align: center;
+  font-size: 4em;
+  h1, .score {
+    margin: 0;
+  }
+  .score {
+    font-size: .5em;
   }
 }
