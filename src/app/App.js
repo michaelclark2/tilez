@@ -1,34 +1,33 @@
-import React, { Component } from 'react';
-import Board from '../components/Board/Board';
-import './App.scss';
-import { GameState } from './GameState';
-import { GameBoard } from '../models/GameBoard';
+import React, { Component } from "react";
+import Board from "../components/Board/Board";
+import "./App.css";
+import { GameState } from "./GameState";
+import { GameBoard } from "../models/GameBoard";
 
 class App extends Component {
-
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.setBoard = (newBoard) => {
-      const {board} = {...this.state};
+      const { board } = { ...this.state };
       board.tiles = newBoard;
-      this.setState({board});
+      this.setState({ board });
     };
 
     this.addToScore = (newScore) => {
-      const {score} = {...this.state};
-      this.setState({score: score + newScore});
+      const { score } = { ...this.state };
+      this.setState({ score: score + newScore });
     };
 
     this.state = {
       board: new GameBoard(20, 20, 4),
       score: 0,
       setBoard: this.setBoard,
-      addToScore: this.addToScore
+      addToScore: this.addToScore,
     };
   }
 
-  render () {
+  render() {
     return (
       <div className="App">
         <GameState.Provider value={this.state}>
@@ -39,6 +38,6 @@ class App extends Component {
       </div>
     );
   }
-};
+}
 
 export default App;
